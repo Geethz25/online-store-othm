@@ -19,6 +19,8 @@ class StoreControlCentre(tk.Tk):
         tk.Label(search_frame, text="Search:").pack(side="left")
         self.search_entry = tk.Entry(search_frame)
         self.search_entry.pack(side="left", fill="x", expand=True, padx=5)
+        # Enhancement: pressing Enter in the search box now triggers search directly
+        self.search_entry.bind("<Return>", lambda event: self.search_products())
         tk.Button(search_frame, text="Search", command=self.search_products).pack(side="left")
         tk.Button(search_frame, text="Show All", command=self.refresh_products).pack(side="left")
 
@@ -110,5 +112,3 @@ class StoreControlCentre(tk.Tk):
 if __name__ == "__main__":
     app_gui = StoreControlCentre()
     app_gui.mainloop()
-
-# Enhancement: keyboard shortcut to refresh the product list
