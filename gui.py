@@ -110,3 +110,5 @@ class StoreControlCentre(tk.Tk):
 if __name__ == "__main__":
     app_gui = StoreControlCentre()
     app_gui.mainloop()
+
+# Enhancement: keyboard shortcut to refresh the product list
