@@ -8,3 +8,6 @@ a store's product catalogue, built for the Building Python Applications unit.
 - gui.py - Tkinter staff control centre
 - templates/index.html - customer-facing web page
 - test_app.py - automated unit and integration tests
+
+## Testing
+Run `python -m unittest test_app.py -v` to execute all 8 automated tests.
