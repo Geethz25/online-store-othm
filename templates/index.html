@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Online Store</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background: #f7f7f7; }
+        h1 { color: #2c3e50; }
+        input, button { padding: 8px; margin: 5px 0; }
+        table { border-collapse: collapse; width: 100%; background: #fff; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background: #2c3e50; color: #fff; }
+    </style>
+</head>
+<body>
+    <h1>Online Store - Product Catalogue</h1>
+    <input type="text" id="searchBox" placeholder="Search products...">
+    <button onclick="searchProducts()">Search</button>
+    <button onclick="loadProducts()">Show All</button>
+    <table>
+        <thead>
+            <tr><th>ID</th><th>Name</th><th>Category</th><th>Price (LKR)</th><th>Stock</th></tr>
+        </thead>
+        <tbody id="productTable"></tbody>
+    </table>
+    <script>
+        async function loadProducts() {
+            const res = await fetch('/api/products');
+            const products = await res.json();
+            renderProducts(products);
+        }
+        async function searchProducts() {
+            const q = document.getElementById('searchBox').value;
+            const res = await fetch('/api/products?q=' + encodeURIComponent(q));
+            const products = await res.json();
+            renderProducts(products);
+        }
+        function renderProducts(products) {
+            const tbody = document.getElementById('productTable');
+            tbody.innerHTML = '';
+            products.forEach(p => {
+                const row = document.createElement('tr');
+                row.innerHTML = `<td>${p.id}</td><td>${p.name}</td><td>${p.category}</td><td>${p.price.toFixed(2)}</td><td>${p.stock_quantity}</td>`;
+                tbody.appendChild(row);
+            });
+        }
+        loadProducts();
+    </script>
+</body>
+</html>

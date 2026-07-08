@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+store.db
+instance/
+sample_data/
+.config/
