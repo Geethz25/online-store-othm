@@ -112,3 +112,5 @@ class StoreControlCentre(tk.Tk):
 if __name__ == "__main__":
     app_gui = StoreControlCentre()
     app_gui.mainloop()
+
+# Displays the store name in the window title for clarity
