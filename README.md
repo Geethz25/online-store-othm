@@ -11,3 +11,6 @@ a store's product catalogue, built for the Building Python Applications unit.
 
 ## Testing
 Run `python -m unittest test_app.py -v` to execute all 8 automated tests.
+
+## Version
+Version 1.1 - includes Enter-key search shortcut.
