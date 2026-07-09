@@ -14,3 +14,5 @@ Run `python -m unittest test_app.py -v` to execute all 8 automated tests.
 
 ## Version
 Version 1.1 - includes Enter-key search shortcut.
+
+Report screenshot demo entry.
