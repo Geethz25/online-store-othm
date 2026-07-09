@@ -50,7 +50,7 @@ def get_products():
 
 @app.route('/api/products/<int:product_id>', methods=['GET'])
 def get_product(product_id):
-    product = Product.query.get(product_id)
+    product = db.session.get(Product, product_id)
     if product is None:
         return jsonify({"error": "Product not found"}), 404
     return jsonify(product.to_dict()), 200
@@ -74,7 +74,7 @@ def add_product():
 
 @app.route('/api/products/<int:product_id>', methods=['PUT'])
 def update_product(product_id):
-    product = Product.query.get(product_id)
+    product = db.session.get(Product, product_id)
     if product is None:
         return jsonify({"error": "Product not found"}), 404
     data = request.get_json(silent=True) or {}
@@ -92,7 +92,7 @@ def update_product(product_id):
 
 @app.route('/api/products/<int:product_id>', methods=['DELETE'])
 def delete_product(product_id):
-    product = Product.query.get(product_id)
+    product = db.session.get(Product, product_id)
     if product is None:
         return jsonify({"error": "Product not found"}), 404
     db.session.delete(product)
